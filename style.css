@@ -1,0 +1,26 @@
+.container{
+  width: 90%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.italy-green{
+  color: #009246;
+}
+
+.italy-red{
+  color: #ce2b37;
+}
+
+.white{
+  color: #ffffff;
+}
+
+.main-header{
+  background: linear-gradient(to right, #009246, #ffffff, #ce2b37 );
+  height: 200px;
+}
+
+.no-display{
+  display: none;
+}
