@@ -14,9 +14,10 @@ var setThree =  {
   options: ['Parmesan','Mozzerella','Asiago','Pecorino' ]
 }
 
-var allSets = [ setOne, setTwo, setThree ]
-setNumber = 0
-questionNumber = 1
+var allSets = [ setOne, setTwo, setThree ],
+setNumber = 0,
+questionNumber = 1,
+points = 0
 var firstSet = function(n){
   document.getElementById('answers').innerHTML = ''
   document.getElementById('results').innerHTML = ''
@@ -35,14 +36,30 @@ var answerCheck = function() {
   var radios = document.querySelector('input[type="radio"]:checked').value;
   if (radios === allSets[setNumber].answer) {
     document.getElementById('results').innerHTML = "That's it!"
+    points++
   } else {
-    document.getElementById('results').innerHTML = "WRONG"
+    document.getElementById('results').innerHTML = "Nice try, but the correct answer is " + allSets[setNumber].answer
   }
-  document.getElementById('nextSet').innerHTML = '<a href="#" onclick="firstSet(setNumber++); questionNumberChange(questionNumber++);">Go to next question </a>'
+
+  if (allSets[setNumber] === allSets[2]){
+    document.getElementById('nextSet').innerHTML = '<a href="#" onclick="results()">See results</a>'
+  } else{
+      document.getElementById('nextSet').innerHTML = '<a href="#" onclick="firstSet(setNumber++); questionNumberChange(questionNumber++);">Go to next question </a>'
+  }
 
 }
 
 var questionNumberChange = function() {
   document.getElementById('questionNumber').innerHTML = '<h3> Question ' + questionNumber + ' of 3</h3>'
+
+}
+
+var results = function(){
+  document.getElementById('answers').innerHTML = ''
+  document.getElementById('results').innerHTML = 'Congrats on finishing! You answered ' + points + ' out of 3 correctly'
+  document.getElementById('nextSet').innerHTML = ''
+  document.getElementById('question').innerHTML = ''
+  document.getElementById('questionNumber').style.display = 'none'
+  document.getElementById('submitBtn').style.display = 'none'
 
 }
